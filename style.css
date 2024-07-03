@@ -127,6 +127,62 @@ nav.header {
   align-items: center;
 }
 
+.container {
+  padding: 1rem;
+}
+
+.breadcrumb * {
+  padding: 0;
+  margin: 0;
+}
+
+.breadcrumb {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: row;
+}
+
+.carousel {
+  background-color: green;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.carousel li {
+  background-color: red;
+  border-radius: 0.5rem;
+}
+
+.carousel-item-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 6rem;
+  margin: 0rem;
+}
+
+.carousel-item-image {
+  background-color: blue;
+  flex-grow: 2;
+}
+
+.carousel-item-caption {
+  text-align: center;
+}
+
+.carousel-item-options {
+  height: auto;
+  background-color: yellow;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.carousel-item-options button {
+  width: 100%;
+}
+
 /*animations*/
 
 @keyframes sidebar-in {

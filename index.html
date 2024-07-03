@@ -1,38 +1,99 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <title>LandiTube GUI</title>
-  </head>
-  <body>
-    <div class="darken-overlay"></div>
-    <div class="sidebar-wrapper">
-        <div class="sidebar">
-          <ul>
-            <li active data-option="home">🏠 Home</li>
-            <li data-option="volume_points">🗣 Volume Points</li>
-            <li data-option="layers">📰 Layers</li>
-            <li>a</li>
-            <li>a</li>
-            <li>a</li>
-            <li data-option="settings">⚙ Settings</li>
-          </ul>
-        </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>LandiTube GUI</title>
+</head>
+
+<body>
+  <div class="darken-overlay"></div>
+  <div class="sidebar-wrapper">
+    <div class="sidebar">
+      <ul>
+        <li data-option="home">🏠 Home</li>
+        <li active data-option="editor">✏ Editor</li>
+        <li data-option="volume_points">🗣 Volume Points</li>
+        <li data-option="layers">📰 Layers</li>
+        <li>a</li>
+        <li>a</li>
+        <li>a</li>
+        <li data-option="settings">⚙ Settings</li>
+      </ul>
     </div>
-    <nav class="header">
-      <button class="sidebar-btn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-list" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
-        </svg>
-      </button>
-      <h1>🏠 Home</h1>
-    </nav>
-    <script type="module" src="/main.js"></script>
-  </body>
-  </html>
+  </div>
+  <nav class="header">
+    <button class="sidebar-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-list"
+        viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+          d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+      </svg>
+    </button>
+    <h1>✏ Editor</h1>
+  </nav>
+
+  <!--Main container-->
+  <div class="container">
+    <div data-page="home" class="page"></div>
+    <div data-page="editor" class="page">
+      <nav class="breadcrumb editor">
+        <button>◀</button>
+        <div>📦</div>
+        <p>Test</p>
+        <div>/</div>
+        <div>Test</div>
+      </nav>
+      <h1 class="subpage-header">Models</h1>
+      <div data-subpage="models" class="subpage">
+        <ul class="carousel models">
+          <li>
+            <div class="carousel-item-container">
+              <div class="carousel-item-image">This is where the image goes</div>
+              <div class="carousel-item-caption">asdasdasddasdasdasdasdsasdasdasdasdasdas</div>
+              <div class="carousel-item-options">
+                <button>A</button>
+                <button>B</button>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="carousel-item-container">
+              <div class="carousel-item-image">This is where the image goes</div>
+              <div class="carousel-item-caption">asdasdasddasdasdasdasdsasdasdasdasdasdas</div>
+              <div class="carousel-item-options">
+                <button>A</button>
+                <button>B</button>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="carousel-item-container">
+              <div class="carousel-item-image">This is where the image goes</div>
+              <div class="carousel-item-caption">asdasdasddasdasdasdasdsasdasdasdasdasdas</div>
+              <div class="carousel-item-options">
+                <button>A</button>
+                <button>B</button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div data-page="layers" class="page"></div>
+    <div data-page="volume_points" class="page"></div>
+    <div data-page="settings" class="page"></div>
+  </div>
+
+  <!--Scripts-->
+  <script type="module" src="/main.js"></script>
+</body>
+
+</html>
