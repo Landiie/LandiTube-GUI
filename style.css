@@ -11,7 +11,7 @@ body {
   font-family: "Nunito";
 }
 
-h1 {
+h1, h2, h3, h4, h5 {
   margin: 0;
   padding: 0;
 }
@@ -22,6 +22,15 @@ button > * {
 
 button {
   cursor: pointer;
+}
+
+.danger {
+  background-color: rgb(246, 52, 52);
+  border-radius: 0.2rem;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  border: 0;
 }
 
 .sidebar-wrapper {
@@ -127,8 +136,12 @@ nav.header {
   align-items: center;
 }
 
-.container {
+.main-container {
   padding: 1rem;
+}
+
+.main-container [data-page] {
+  display: none;
 }
 
 .breadcrumb * {
@@ -142,34 +155,61 @@ nav.header {
   flex-direction: row;
 }
 
+.subpage-caption {
+  margin: 0;
+}
+
 .carousel {
-  background-color: green;
+  /* background-color: green; */
   padding: 0;
   margin: 0;
   list-style: none;
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row;
+  gap: 1rem;
+  
 }
 
 .carousel li {
-  background-color: red;
+  padding: 0.5rem;
   border-radius: 0.5rem;
+  transition: 100ms cubic-bezier(0.175, 0.885, 0.32, 1.275)
+}
+
+.carousel li:hover {
+  transform: scale(1.05);
+}
+
+.carousel li .danger{
+  padding: 0.5rem;
 }
 
 .carousel-item-container {
   display: flex;
   flex-direction: column;
-  min-height: 6rem;
+  min-height: 14rem;
+  width: 10rem;
   margin: 0rem;
 }
 
 .carousel-item-image {
-  background-color: blue;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
   flex-grow: 2;
+  cursor: pointer;
 }
 
 .carousel-item-caption {
+  font-size: 1.2rem;
   text-align: center;
+  max-height: 2rem;
+  max-width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-wrap: nowrap;
+  white-space: nowrap;
 }
 
 .carousel-item-options {
@@ -191,5 +231,12 @@ nav.header {
   }
   to {
     transform: translate(0rem);
+  }
+}
+
+/* media queries */
+@media screen and (max-width: 576px)  {
+  .carousel {
+    justify-content: center;
   }
 }
