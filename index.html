@@ -15,6 +15,19 @@
 </head>
 
 <body>
+  <!--context menu-->
+  <div class="context-menu">
+    <ul>
+      <li>
+        <div class="icon">😊</div>
+        <div>Edit Emotions</div>
+      </li>
+      <li>
+        <div class="icon"><i class="bi bi-car-front-fill"></i></div>
+        <div>Edit Transitions (Global)</div>
+      </li>
+    </ul>
+  </div>
   <div class="darken-overlay"></div>
   <div class="sidebar-wrapper">
     <div class="sidebar">
@@ -47,7 +60,9 @@
     <div data-page="editor" class="page">
       <nav class="breadcrumb editor">
         <button>◀</button>
-        <div>📦</div>
+        <div>
+          <div>📦</div>
+        </div>
       </nav>
       <h1 class="subpage-header">Models</h1>
       <p class="subpage-caption">Choose a model to edit!</p>
@@ -81,6 +96,31 @@
             </div>
           </li>
         </ul>
+      </div>
+      <div data-subpage="emotions" class="subpage">
+        <ul class="carousel emotions">
+          <li data-emotion-id="0">
+            <div class="carousel-item-container">
+              <div class="carousel-item-image" style="background-image: url(https://em-content.zobj.net/source/twitter/376/grinning-face_1f600.png);"></div>
+              <h2 class="carousel-item-caption">happy</h2>
+              <div class="carousel-item-options">
+                <button class="danger"><i class="bi bi-trash-fill" style="margin-right: 0.2rem"></i>Delete</button>
+              </div>
+            </div>
+          </li>
+          <li data-emotion-id="1">
+            <div class="carousel-item-container">
+              <div class="carousel-item-image" style="background-image: url(https://em-content.zobj.net/source/twitter/376/sad-but-relieved-face_1f625.png);"></div>
+              <h2 class="carousel-item-caption">sad</h2>
+              <div class="carousel-item-options">
+                <button class="danger"><i class="bi bi-trash-fill" style="margin-right: 0.2rem"></i>Delete</button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div>
+
       </div>
     </div>
     <div data-page="layers" class="page"></div>
