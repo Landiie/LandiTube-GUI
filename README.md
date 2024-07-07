@@ -1,6 +1,8 @@
 # LandiTube-GUI
 GUI for LandiTube written in good ol' HTML, CSS, and JS, with Vite as my tool of choice and a plugin to allow a single file output on build.
 
+There are some other goodies in here such as the concept art pdn files (for use in paintdotnet) as well as some dummy data to give the GUI something to load, like test model structure.
+
 ## Download
 You shouldn't need to get the manual download of the GUI, but if you need it, check the releases tab on the right! the GUI comes bundled with every release of LandiTube 0.30.0^.
 
