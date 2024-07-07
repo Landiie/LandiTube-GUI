@@ -39,6 +39,34 @@ button {
   border: 0;
 }
 
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.685);
+  opacity: 0;
+  animation: fade-in 500ms cubic-bezier(0.31, 1.28, 0.7, 1.06) forwards;
+}
+
+dialog.properties {
+  transform: translateY(100%);
+  opacity: 0;
+  width: 80%;
+}
+
+dialog.properties[opening] {
+  animation: float-up 500ms cubic-bezier(0.31, 1.28, 0.7, 1.06) forwards;
+}
+
+dialog.properties[exit] {
+  animation: float-down 500ms cubic-bezier(0.31, 1.28, 0.7, 1.06) forwards;
+}
+dialog.properties[exit]::backdrop {
+  animation: fade-out 500ms cubic-bezier(0.31, 1.28, 0.7, 1.06) forwards;
+}
+
+dialog.properties form {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
 .context-menu {
   display: none;
   z-index: 1000;
@@ -48,9 +76,9 @@ button {
   top: 0;
   left: 0;
   width: 10rem;
-  box-shadow: 6px 5px 14px -2px rgba(0,0,0,0.31);
--webkit-box-shadow: 6px 5px 14px -2px rgba(0,0,0,0.31);
--moz-box-shadow: 6px 5px 14px -2px rgba(0,0,0,0.31);
+  box-shadow: 6px 5px 14px -2px rgba(0, 0, 0, 0.31);
+  -webkit-box-shadow: 6px 5px 14px -2px rgba(0, 0, 0, 0.31);
+  -moz-box-shadow: 6px 5px 14px -2px rgba(0, 0, 0, 0.31);
 }
 
 .context-menu ul {
@@ -73,7 +101,7 @@ button {
 }
 
 .context-menu ul li:hover {
-  background-color: var(--hover-color)
+  background-color: var(--hover-color);
 }
 
 .context-menu ul li * {
@@ -90,6 +118,86 @@ button {
   background-color: var(--danger-color);
 }
 
+.toast-area {
+  list-style: none;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 1rem;
+  margin: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow: hidden;
+}
+
+.toast-notif {
+  padding: 0.3rem;
+  background: var(--main-bg-color);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: start;
+  align-items: center;
+  gap: 1rem;
+  max-width: 20rem;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.492);
+  transform: translateX(100%);
+  opacity: 1;
+  animation: toast-in 200ms cubic-bezier(0.31, 1.28, 0.7, 1.06) forwards;
+}
+
+.toast-notif[exit] {
+  animation: fade-out 500ms linear forwards;
+}
+
+.toast-notif::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 5px;
+  background: blue;
+  animation: toast-timer 5s linear forwards;
+}
+
+.toast-notif.success::after {
+  background: green;
+}
+
+.toast-notif.error::after {
+  background: red;
+}
+
+.toast-notif i {
+  font-size: 1.5rem;
+  margin-left: 1rem;
+  color: blue;
+}
+
+.toast-notif.error i {
+  color: red;
+}
+
+.toast-notif.success i {
+  color: green;
+}
+
+.toast-notif p {
+  margin-right: 4rem;
+}
+
+.toast-notif button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 5px;
+  border: none;
+  padding: 0.4rem;
+  background-color: var(--main-bg-color);
+}
 
 .sidebar-wrapper {
   position: absolute;
@@ -298,6 +406,44 @@ nav.header {
   }
   to {
     transform: translate(0rem);
+  }
+}
+
+@keyframes toast-timer {
+  100% {
+    width: 0;
+  }
+}
+
+@keyframes toast-in {
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-out {
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes float-up {
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes float-down {
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
   }
 }
 

@@ -15,6 +15,27 @@
 </head>
 
 <body>
+  <button id="toastTestError">Error Toast</button>
+  <button id="toastTestSuccess">Success Toast</button>
+  <button id="toastTestInfo">Info Toast</button>
+  <button id="modalTestShow">Show Properties Modal</button>
+  <!--Properties Modal-->
+  <dialog class="properties">
+    <h2>Properties</h2>
+    <form action="">
+      <div>
+        <label for="name">Name:</label>
+        <input type="text">
+      </div>
+      <label for="tiny">Tiny?</label>
+      <input type="checkbox">
+    </form>
+    <button class="close">Close</button>
+  </dialog>
+  <!--toast bar-->
+  <ul class="toast-area">
+    
+  </ul>
   <!--context menu-->
   <div class="context-menu">
     <ul>
@@ -73,7 +94,7 @@
               <div class="carousel-item-image" style="background-image: url(https://i.imgur.com/17uXMdl.png);"></div>
               <h2 class="carousel-item-caption">Lil guy</h2>
               <div class="carousel-item-options">
-                
+
               </div>
             </div>
           </li>
@@ -101,7 +122,9 @@
         <ul class="carousel emotions">
           <li data-emotion-id="0">
             <div class="carousel-item-container">
-              <div class="carousel-item-image" style="background-image: url(https://em-content.zobj.net/source/twitter/376/grinning-face_1f600.png);"></div>
+              <div class="carousel-item-image"
+                style="background-image: url(https://em-content.zobj.net/source/twitter/376/grinning-face_1f600.png);">
+              </div>
               <h2 class="carousel-item-caption">happy</h2>
               <div class="carousel-item-options">
                 <button class="danger"><i class="bi bi-trash-fill" style="margin-right: 0.2rem"></i>Delete</button>
@@ -110,7 +133,9 @@
           </li>
           <li data-emotion-id="1">
             <div class="carousel-item-container">
-              <div class="carousel-item-image" style="background-image: url(https://em-content.zobj.net/source/twitter/376/sad-but-relieved-face_1f625.png);"></div>
+              <div class="carousel-item-image"
+                style="background-image: url(https://em-content.zobj.net/source/twitter/376/sad-but-relieved-face_1f625.png);">
+              </div>
               <h2 class="carousel-item-caption">sad</h2>
               <div class="carousel-item-options">
                 <button class="danger"><i class="bi bi-trash-fill" style="margin-right: 0.2rem"></i>Delete</button>

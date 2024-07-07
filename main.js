@@ -1,7 +1,7 @@
 //globals
 const html = (strings, ...values) => String.raw({ raw: strings }, ...values); //allows html tagging for template literals
 let mData = {};
-let sammiDir = '';
+let sammiDir = "";
 const editor = {
   current_model: null,
   current_transition: null,
@@ -26,20 +26,23 @@ const contextMenu = {
 
 let activePage = null;
 
-startup();
-
-async function startup() {
+(async () => {
   await loadLandiTubeModels();
   console.log(mData);
   loadModelCaro();
+  showModal()
 
   //initial page startup
   changePage("editor");
-}
+})();
 
 //event listeners
 document.addEventListener("click", e => {
   hideContextMenu();
+});
+
+$("dialog.properties .close").addEventListener("click", () => {
+  closeModal();
 });
 
 $(".context-menu ul").addEventListener("click", e => {
@@ -51,7 +54,9 @@ $(".context-menu ul").addEventListener("click", e => {
       editor.current_model = contextMenu.data.model_id;
       changeSubPage("emotions");
       break;
-
+    case "properties":
+      showModal();
+      break;
     default:
       break;
   }
@@ -103,7 +108,89 @@ $(".sidebar ul").addEventListener("click", e => {
   changePage(option);
 });
 
+modalTestShow.addEventListener("click", () => {
+  showModal();
+});
+
+toastTestError.addEventListener("click", () => {
+  showToast("error", "Woah, a super scary error!!!");
+});
+
+toastTestSuccess.addEventListener("click", () => {
+  showToast("success", "Changes Saved!");
+});
+
+toastTestInfo.addEventListener("click", () => {
+  showToast(
+    null,
+    "I am here to inform you that you are using a program made by a fennec. Checkmate, liberals"
+  );
+});
+
 //functions
+async function showModal() {
+  $("dialog.properties").setAttribute('opening', true);
+  $("dialog.properties").showModal();
+  await wait(500);
+  $("dialog.properties").removeAttribute('opening');
+  $("dialog.properties").style.opacity = 1;
+  $("dialog.properties").style.transform = 'translateY(0)';
+  
+}
+
+async function closeModal() {
+  $("dialog.properties").setAttribute('exit', true);
+  await wait(500);
+  $("dialog.properties").close();
+  $("dialog.properties").removeAttribute('exit');
+  $("dialog.properties").style.opacity = 0;
+  $("dialog.properties").style.transform = 'translateY(100%)';
+}
+
+async function showToast(type, msg) {
+  const toast = strToHTML(html`
+    <li class="toast-notif">
+      <i class="bi"></i>
+      <p>YOU SHOULD NOT BE SEEING THIS MESSAGE</p>
+      <button>X</button>
+    </li>
+  `);
+  const removeToast = async function () {
+    toast.setAttribute("exit", true);
+    await wait(500);
+    toast.remove();
+  };
+  switch (type) {
+    case "success":
+      toast.classList.add("success");
+      toast.querySelector("i").classList.add("bi-check-circle-fill");
+      break;
+    case "error":
+      toast.classList.add("error");
+      toast.querySelector("i").classList.add("bi-x-circle-fill");
+      break;
+    default:
+      toast.querySelector("i").classList.add("bi-info-circle-fill");
+      break;
+  }
+
+  toast.querySelector("p").innerText = msg;
+
+  toast.querySelector("button").addEventListener("click", () => {
+    removeToast();
+  });
+
+  $(".toast-area").appendChild(toast);
+  setTimeout(removeToast, 5000);
+  await wait(200);
+  /* 
+    sets the animation result to the actual element 
+    after the animation has finished so
+    it doesn't reset when adding a new animation
+  */
+  toast.style.transform = "translateX(0)";
+}
+
 function changeSubPage(subpage) {
   const currentSubpage = subpages[activePage].active;
   if (currentSubpage !== null) {
@@ -308,36 +395,47 @@ async function hideSidebar() {
 
 async function loadModelCaro() {
   const modelIds = Object.keys(mData);
-  $('.carousel.models').innerHTML = ''
+  $(".carousel.models").innerHTML = "";
   for (let i = 0; i < modelIds.length; i++) {
     const modelId = modelIds[i];
     const model = mData[modelId];
-    console.log(model)
-    const mdlCaroItem = await genModelCaroItem(modelId, getModelName(modelId), getModelPreview(modelId), false);
-    console.log(mdlCaroItem)
-    $('.carousel.models').appendChild(mdlCaroItem)
+    console.log(model);
+    const mdlCaroItem = await genModelCaroItem(
+      modelId,
+      getModelName(modelId),
+      getModelPreview(modelId),
+      false
+    );
+    console.log(mdlCaroItem);
+    $(".carousel.models").appendChild(mdlCaroItem);
     console.log(model);
   }
 }
 
 function getModelName(modelId) {
-  if (mData[modelId]?.name === undefined) return "???"
-  return mData[modelId].name
+  if (mData[modelId]?.name === undefined) return "???";
+  return mData[modelId].name;
 }
 
 function getModelImg(modelId) {
-  if (mData[modelId]?.icon === undefined) return relativeImg(mData[modelId].emos['emo-1'].idles[0].path)
-    return relativeImg(mData[modelId].icon);
+  if (mData[modelId]?.icon === undefined)
+    return relativeImg(mData[modelId].emos["emo-1"].idles[0].path);
+  return relativeImg(mData[modelId].icon);
 }
 
 function getModelPreview(modelId) {
-  if (mData[modelId]?.icon !== undefined) return relativeImg(mData[modelId].icon);
-  if (mData[modelId]?.emos['emo-1'] && mData[modelId].emos['emo-1'].idles.length > 0) return relativeImg(mData[modelId].emos['emo-1'].idles[0].path)
-  return ''
+  if (mData[modelId]?.icon !== undefined)
+    return relativeImg(mData[modelId].icon);
+  if (
+    mData[modelId]?.emos["emo-1"] &&
+    mData[modelId].emos["emo-1"].idles.length > 0
+  )
+    return relativeImg(mData[modelId].emos["emo-1"].idles[0].path);
+  return "";
 }
 
 function relativeImg(str) {
-  return str.replace(sammiDir, '')
+  return str.replace(sammiDir, "");
 }
 
 async function genModelCaroItem(id, name, imgPath, temporary) {
@@ -345,29 +443,29 @@ async function genModelCaroItem(id, name, imgPath, temporary) {
   const template = html`
     <li data-model-id="?">
       <div class="carousel-item-container">
-        <div
-          class="carousel-item-image"
-          style=""
-        ></div>
+        <div class="carousel-item-image" style=""></div>
         <h2 class="carousel-item-caption">Lil guy</h2>
-        <div class="carousel-item-options">
-        </div>
+        <div class="carousel-item-options"></div>
       </div>
     </li>
   `;
   const caroItem = strToHTML(template);
   caroItem.dataset.modelId = id;
-  caroItem.querySelector('.carousel-item-caption').innerText = name
-  caroItem.querySelector('.carousel-item-image').style.backgroundImage = `url(${imgPath})`
-  console.log(caroItem.querySelector('.carousel-item-image').style.backgroundImage)
-  return caroItem
+  caroItem.querySelector(".carousel-item-caption").innerText = name;
+  caroItem.querySelector(
+    ".carousel-item-image"
+  ).style.backgroundImage = `url(${imgPath})`;
+  console.log(
+    caroItem.querySelector(".carousel-item-image").style.backgroundImage
+  );
+  return caroItem;
 }
 
 async function loadLandiTubeModels() {
   const res = await fetch("simulated.json");
   const json = await res.json();
   mData = json.mdls;
-  sammiDir = json.sammiDir
+  sammiDir = json.sammiDir;
 }
 
 //functions (util)
