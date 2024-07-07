@@ -1,0 +1,123 @@
+{
+  "sammiDir": "c:/Cloud/Google Drive (Business)/SAMMI (LandiTube Rewrite)/landies_extensions/landitube",
+  "mdls": {
+    "mdl-0": {
+      "cache_helper": [
+        "LTubeCache|bdbf901d1eef97c0ee67036858e65030",
+        "LTubeCache|cf67e02044442370e23f1bae0d4621e0",
+        "LTubeCache|b94e5a10ca890f9de97daaea3ec280d7",
+        "LTubeCache|97b688b71d90813fcedb9aacf0d37e9d",
+        "LTubeCache|e8f8513f536988df1d60b2d25f164b79",
+        "LTubeCache|a9fcce71f4f0085456c7e83975441a8c",
+        "LTubeCache|6d4fa8708eca87d7d60ee39f0cb35ae7",
+        "LTubeCache|192e39164f95b07c807b70c1ddc72920",
+        "LTubeCache|55652c2b296e292baf4cf4a7fbb2cac9"
+      ],
+      "emos": {
+        "emo-1": {
+          "cache_helper": [
+            "LTubeCache|bdbf901d1eef97c0ee67036858e65030",
+            "LTubeCache|cf67e02044442370e23f1bae0d4621e0",
+            "LTubeCache|b94e5a10ca890f9de97daaea3ec280d7",
+            "LTubeCache|97b688b71d90813fcedb9aacf0d37e9d",
+            "LTubeCache|e8f8513f536988df1d60b2d25f164b79",
+            "LTubeCache|a9fcce71f4f0085456c7e83975441a8c",
+            "LTubeCache|6d4fa8708eca87d7d60ee39f0cb35ae7",
+            "LTubeCache|192e39164f95b07c807b70c1ddc72920",
+            "LTubeCache|55652c2b296e292baf4cf4a7fbb2cac9"
+          ],
+          "id": "emo-1",
+          "name": "???",
+          "idles": [
+            {
+              "id": "idle_1",
+              "path": "c:/Cloud/Google Drive (Business)/SAMMI (LandiTube Rewrite)/landies_extensions/landitube/models/mdl-0/emotions/emo-1/idle/idle_1.png",
+              "sourceName": "LTubeCache|bdbf901d1eef97c0ee67036858e65030",
+              "type": "image",
+              "config": {}
+            },
+            {
+              "id": "idle_2",
+              "path": "c:/Cloud/Google Drive (Business)/SAMMI (LandiTube Rewrite)/landies_extensions/landitube/models/mdl-0/emotions/emo-1/idle/idle_2.png",
+              "sourceName": "LTubeCache|cf67e02044442370e23f1bae0d4621e0",
+              "type": "image",
+              "config": {}
+            },
+            {
+              "id": "idle_3",
+              "path": "c:/Cloud/Google Drive (Business)/SAMMI (LandiTube Rewrite)/landies_extensions/landitube/models/mdl-0/emotions/emo-1/idle/idle_3.png",
+              "sourceName": "LTubeCache|b94e5a10ca890f9de97daaea3ec280d7",
+              "type": "image",
+              "config": {}
+            }
+          ],
+          "idles_weight": [1, 1, 1],
+          "talks": [
+            {
+              "id": "talk_1",
+              "path": "c:/Cloud/Google Drive (Business)/SAMMI (LandiTube Rewrite)/landies_extensions/landitube/models/mdl-0/emotions/emo-1/talk/talk_1.png",
+              "sourceName": "LTubeCache|97b688b71d90813fcedb9aacf0d37e9d",
+              "type": "image",
+              "config": {}
+            },
+            {
+              "id": "talk_2",
+              "path": "c:/Cloud/Google Drive (Business)/SAMMI (LandiTube Rewrite)/landies_extensions/landitube/models/mdl-0/emotions/emo-1/talk/talk_2.png",
+              "sourceName": "LTubeCache|e8f8513f536988df1d60b2d25f164b79",
+              "type": "image",
+              "config": {}
+            },
+            {
+              "id": "talk_3",
+              "path": "c:/Cloud/Google Drive (Business)/SAMMI (LandiTube Rewrite)/landies_extensions/landitube/models/mdl-0/emotions/emo-1/talk/talk_3.png",
+              "sourceName": "LTubeCache|a9fcce71f4f0085456c7e83975441a8c",
+              "type": "image",
+              "config": {}
+            }
+          ],
+          "talks_weight": [1, 1, 1],
+          "vol_nums": [20],
+          "vol_data": [
+            {
+              "poseData": [
+                {
+                  "id": "low_1",
+                  "path": "c:/Cloud/Google Drive (Business)/SAMMI (LandiTube Rewrite)/landies_extensions/landitube/models/mdl-0/emotions/emo-1/volume/low_1.png",
+                  "sourceName": "LTubeCache|6d4fa8708eca87d7d60ee39f0cb35ae7",
+                  "type": "image",
+                  "config": {}
+                },
+                {
+                  "id": "low_2",
+                  "path": "c:/Cloud/Google Drive (Business)/SAMMI (LandiTube Rewrite)/landies_extensions/landitube/models/mdl-0/emotions/emo-1/volume/low_2.png",
+                  "sourceName": "LTubeCache|192e39164f95b07c807b70c1ddc72920",
+                  "type": "image",
+                  "config": {}
+                },
+                {
+                  "id": "low_3",
+                  "path": "c:/Cloud/Google Drive (Business)/SAMMI (LandiTube Rewrite)/landies_extensions/landitube/models/mdl-0/emotions/emo-1/volume/low_3.png",
+                  "sourceName": "LTubeCache|55652c2b296e292baf4cf4a7fbb2cac9",
+                  "type": "image",
+                  "config": {}
+                }
+              ],
+              "poseWeight": [1, 1, 1],
+              "config": { "level": 20 }
+            }
+          ],
+          "intros": [],
+          "intros_weight": [],
+          "outros": [],
+          "outros_weight": [],
+          "hits": [],
+          "hits_weight": [],
+          "parries": [],
+          "parries_weight": []
+        }
+      },
+      "glob_trans": [],
+      "glob_trans_weight": []
+    }
+  }
+}

@@ -1,4 +1,7 @@
 //globals
+const html = (strings, ...values) => String.raw({ raw: strings }, ...values); //allows html tagging for template literals
+let mData = {};
+let sammiDir = '';
 const editor = {
   current_model: null,
   current_transition: null,
@@ -23,8 +26,16 @@ const contextMenu = {
 
 let activePage = null;
 
-//initial page startup
-changePage("editor");
+startup();
+
+async function startup() {
+  await loadLandiTubeModels();
+  console.log(mData);
+  loadModelCaro();
+
+  //initial page startup
+  changePage("editor");
+}
 
 //event listeners
 document.addEventListener("click", e => {
@@ -152,6 +163,21 @@ function showContextMenu(type, data, e) {
           </li>
         `)
       );
+      $(".context-menu ul").appendChild(
+        strToHTML(`
+          <li data-menu-option="properties">
+            <div class="icon"><i class="bi bi-pencil-fill"></i></div>
+            <div>Edit Properties</div>
+          </li>
+        `)
+      );
+      $(".context-menu ul").appendChild(
+        strToHTML(`
+          <li class="danger" data-menu-option="properties">
+            <i class="bi bi-trash-fill" style="margin-right: 0.2rem"></i>Delete
+          </li>
+        `)
+      );
       break;
 
     default:
@@ -243,7 +269,7 @@ function updateBreadcrumbs() {
 
   if (editor.current_model !== null) {
     currentModel = document.createElement("p");
-    currentModel.innerText = editor.current_model;
+    currentModel.innerText = getModelName(editor.current_model);
     breadcrumbs.appendChild(currentModel);
   }
 
@@ -278,6 +304,70 @@ async function hideSidebar() {
   $(".sidebar").removeAttribute("active");
   await wait(100);
   $(".sidebar-wrapper").style.display = "none";
+}
+
+async function loadModelCaro() {
+  const modelIds = Object.keys(mData);
+  $('.carousel.models').innerHTML = ''
+  for (let i = 0; i < modelIds.length; i++) {
+    const modelId = modelIds[i];
+    const model = mData[modelId];
+    console.log(model)
+    const mdlCaroItem = await genModelCaroItem(modelId, getModelName(modelId), getModelPreview(modelId), false);
+    console.log(mdlCaroItem)
+    $('.carousel.models').appendChild(mdlCaroItem)
+    console.log(model);
+  }
+}
+
+function getModelName(modelId) {
+  if (mData[modelId]?.name === undefined) return "???"
+  return mData[modelId].name
+}
+
+function getModelImg(modelId) {
+  if (mData[modelId]?.icon === undefined) return relativeImg(mData[modelId].emos['emo-1'].idles[0].path)
+    return relativeImg(mData[modelId].icon);
+}
+
+function getModelPreview(modelId) {
+  if (mData[modelId]?.icon !== undefined) return relativeImg(mData[modelId].icon);
+  if (mData[modelId]?.emos['emo-1'] && mData[modelId].emos['emo-1'].idles.length > 0) return relativeImg(mData[modelId].emos['emo-1'].idles[0].path)
+  return ''
+}
+
+function relativeImg(str) {
+  return str.replace(sammiDir, '')
+}
+
+async function genModelCaroItem(id, name, imgPath, temporary) {
+  if (temporary) return; //todo this is to queue for a "save changes" button
+  const template = html`
+    <li data-model-id="?">
+      <div class="carousel-item-container">
+        <div
+          class="carousel-item-image"
+          style=""
+        ></div>
+        <h2 class="carousel-item-caption">Lil guy</h2>
+        <div class="carousel-item-options">
+        </div>
+      </div>
+    </li>
+  `;
+  const caroItem = strToHTML(template);
+  caroItem.dataset.modelId = id;
+  caroItem.querySelector('.carousel-item-caption').innerText = name
+  caroItem.querySelector('.carousel-item-image').style.backgroundImage = `url(${imgPath})`
+  console.log(caroItem.querySelector('.carousel-item-image').style.backgroundImage)
+  return caroItem
+}
+
+async function loadLandiTubeModels() {
+  const res = await fetch("simulated.json");
+  const json = await res.json();
+  mData = json.mdls;
+  sammiDir = json.sammiDir
 }
 
 //functions (util)
